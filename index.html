@@ -3,87 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>World Cup 2026 Fixture</title>
-  <meta name="description" content="Fixture interactivo del Mundial 2026 con grupos, cruces, banderas y gráficos." />
+  <title>Mundial 2026</title>
+  <meta name="description" content="Fixture completo del Mundial 2026 · 48 selecciones · 12 grupos · Fechas y sedes oficiales." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
-  <div class="bg-grid"></div>
+  <div class="noise"></div>
+
+  <header class="site-header">
+    <div class="header-glow g1"></div>
+    <div class="header-glow g2"></div>
+    <div class="header-inner">
+      <div class="trophy">🏆</div>
+      <h1 class="site-title">MUNDIAL<br><span class="year">2026</span></h1>
+      <p class="site-meta">11 JUN &mdash; 19 JUL &nbsp;·&nbsp; 🇺🇸 USA &nbsp;·&nbsp; 🇨🇦 CANADÁ &nbsp;·&nbsp; 🇲🇽 MÉXICO</p>
+      <div class="header-pills">
+        <span class="pill-badge">48 Selecciones</span>
+        <span class="pill-badge">12 Grupos</span>
+        <span class="pill-badge">104 Partidos</span>
+        <span class="pill-badge">16 Sedes</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs-nav" id="tabsNav">
+    <div class="tabs-inner">
+      <button class="tab-btn active" data-tab="grupos">⚽ Grupos</button>
+      <button class="tab-btn" data-tab="bracket">🔥 Eliminatorias</button>
+      <button class="tab-btn" data-tab="sedes">🏟️ Sedes</button>
+    </div>
+  </nav>
 
   <main class="shell">
-    <section class="hero glass">
-      <div class="hero-copy">
-        <span class="eyebrow">FIFA WORLD CUP 2026</span>
-        <h1>Fixture visual del Mundial con banderas, cruces y estadísticas.</h1>
-        <p>
-          Una web app rápida, moderna y responsive para revisar los 12 grupos,
-          los cruces eliminatorios y la distribución completa del torneo.
-        </p>
-        <div class="hero-badges">
-          <span>🇺🇸 Estados Unidos</span>
-          <span>🇨🇦 Canadá</span>
-          <span>🇲🇽 México</span>
-          <span>48 selecciones</span>
-        </div>
-      </div>
-      <div class="hero-panel glass-dark">
-        <div class="hero-panel-title">Resumen rápido</div>
-        <div class="summary-grid" id="summaryGrid"></div>
-      </div>
-    </section>
-
-    <section class="stats-grid">
-      <article class="stat-card glass">
-        <div class="section-head">
-          <h2>Distribución por confederación</h2>
-          <p>Visual del torneo completo</p>
-        </div>
-        <div class="chart-wrap">
-          <canvas id="confedChart"></canvas>
-        </div>
-      </article>
-
-      <article class="stat-card glass">
-        <div class="section-head">
-          <h2>Países anfitriones en el fixture</h2>
-          <p>Presencia de sedes anfitrionas</p>
-        </div>
-        <div class="hosts-bars" id="hostsBars"></div>
-      </article>
-    </section>
-
-    <section class="glass section-block">
-      <div class="section-head section-head-spread">
-        <div>
-          <h2>Fase de grupos</h2>
-          <p>12 grupos · partidos del todos contra todos</p>
-        </div>
-        <div class="legend">
-          <span><i class="dot gold"></i> Partido</span>
-          <span><i class="dot blue"></i> Selección</span>
-        </div>
-      </div>
+    <section class="tab-section active" id="tab-grupos">
       <div class="groups-grid" id="groupsGrid"></div>
     </section>
 
-    <section class="glass section-block">
-      <div class="section-head">
-        <h2>Cuadro eliminatorio estimado</h2>
-        <p>Cruces visuales desde ronda de 32 hasta la final</p>
+    <section class="tab-section" id="tab-bracket">
+      <p class="bracket-note">Cruces estimados basados en posición de grupos</p>
+      <div class="bracket-scroll">
+        <div class="bracket-columns" id="bracketColumns"></div>
       </div>
-      <div class="knockout-grid" id="knockoutGrid"></div>
     </section>
 
-    <footer class="footer">
-      <span>Hecho para verse bien en móvil y desktop.</span>
-      <span>Publicable en GitHub Pages o Netlify.</span>
-    </footer>
+    <section class="tab-section" id="tab-sedes">
+      <div class="sedes-grid" id="sedesGrid"></div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <span>🏆 FIFA World Cup 2026</span>
+    <span>11 Jun – 19 Jul · 48 Selecciones · 16 Sedes · 104 Partidos</span>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="app.js"></script>
