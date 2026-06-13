@@ -42,16 +42,16 @@
     <section class="tab-section active" id="tab-resultados">
       <div class="live-strip">
         <div>
-          <span class="live-kicker">Actualizado</span>
+          <span class="live-kicker">En automático</span>
           <h2>Resultados reales + partidos de hoy</h2>
-          <p>Marcadores confirmados y próximos cruces con grupos ya corregidos según la composición real del torneo.</p>
+          <p>La página se actualiza sola con datos públicos de ESPN: resultados, en vivo, próximos partidos y grupos reales.</p>
         </div>
-        <span class="live-stamp">13 Jun 2026 · 23:00 UTC</span>
+        <span class="live-stamp" id="liveStamp">Cargando…</span>
       </div>
       <div class="results-grid" id="resultsGrid"></div>
       <div class="subsection-head">
         <h3>Hoy / próximos</h3>
-        <span>Partidos destacados confirmados</span>
+        <span>En vivo y próximos del calendario actual</span>
       </div>
       <div class="results-grid" id="todayGrid"></div>
     </section>
@@ -61,7 +61,7 @@
     </section>
 
     <section class="tab-section" id="tab-bracket">
-      <p class="bracket-note">Cruces estimados basados en posición de grupos</p>
+      <p class="bracket-note">Cuadro referencial del formato 2026. Los datos automáticos en vivo están en Resultados y Grupos.</p>
       <div class="bracket-scroll">
         <div class="bracket-columns" id="bracketColumns"></div>
       </div>
