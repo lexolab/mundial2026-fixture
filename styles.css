@@ -94,6 +94,16 @@ body {
   font-size: 1.1em;
   letter-spacing: 0.06em;
 }
+.site-owner {
+  margin-top: 10px;
+  margin-bottom: 14px;
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  text-shadow: 0 0 18px rgba(240,165,0,0.18);
+}
 .site-meta {
   color: var(--muted2);
   font-size: 0.9rem;
