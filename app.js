@@ -1,13 +1,13 @@
 /* ── flags ── */
 const F = {
-  'Argentina':'🇦🇷','Brasil':'🇧🇷','Colombia':'🇨🇴','Ecuador':'🇪🇨','Uruguay':'🇺🇾','Venezuela':'🇻🇪',
+  'Argentina':'🇦🇷','Brasil':'🇧🇷','Colombia':'🇨🇴','Ecuador':'🇪🇨','Uruguay':'🇺🇾','Paraguay':'🇵🇾',
   'Alemania':'🇩🇪','España':'🇪🇸','Francia':'🇫🇷','Inglaterra':'🏴','Portugal':'🇵🇹','Países Bajos':'🇳🇱',
-  'Bélgica':'🇧🇪','Italia':'🇮🇹','Austria':'🇦🇹','Suiza':'🇨🇭','Turquía':'🇹🇷','Escocia':'🏴',
-  'Hungría':'🇭🇺','Eslovakia':'🇸🇰','Dinamarca':'🇩🇰','Serbia':'🇷🇸','México':'🇲🇽','Estados Unidos':'🇺🇸',
-  'Canadá':'🇨🇦','Costa Rica':'🇨🇷','Honduras':'🇭🇳','Jamaica':'🇯🇲','Japón':'🇯🇵','Corea del Sur':'🇰🇷',
-  'Arabia Saudita':'🇸🇦','Australia':'🇦🇺','Irán':'🇮🇷','Irak':'🇮🇶','Uzbekistán':'🇺🇿','Jordania':'🇯🇴',
-  'Marruecos':'🇲🇦','Senegal':'🇸🇳','Egipto':'🇪🇬','Nigeria':'🇳🇬','Camerún':'🇨🇲','Mali':'🇲🇱',
-  'Sudáfrica':'🇿🇦','Costa de Marfil':'🇨🇮','R.D. Congo':'🇨🇩','Nueva Zelanda':'🇳🇿','Bosnia y Herzegovina':'🇧🇦','Paraguay':'🇵🇾','Czechia':'🇨🇿','TBD-1':'🏳️','TBD-2':'🏳️'
+  'Bélgica':'🇧🇪','Austria':'🇦🇹','Suiza':'🇨🇭','Turquía':'🇹🇷','Escocia':'🏴','Croacia':'🇭🇷',
+  'México':'🇲🇽','Estados Unidos':'🇺🇸','Canadá':'🇨🇦','Bosnia y Herzegovina':'🇧🇦','Qatar':'🇶🇦','Czechia':'🇨🇿',
+  'Japón':'🇯🇵','Corea del Sur':'🇰🇷','Arabia Saudita':'🇸🇦','Australia':'🇦🇺','Irán':'🇮🇷','Irak':'🇮🇶',
+  'Uzbekistán':'🇺🇿','Jordania':'🇯🇴','Marruecos':'🇲🇦','Senegal':'🇸🇳','Egipto':'🇪🇬','Sudáfrica':'🇿🇦',
+  'Costa de Marfil':'🇨🇮','R.D. Congo':'🇨🇩','Nueva Zelanda':'🇳🇿','Haití':'🇭🇹','Curazao':'🇨🇼','Suecia':'🇸🇪',
+  'Túnez':'🇹🇳','Cabo Verde':'🇨🇻','Noruega':'🇳🇴','Argelia':'🇩🇿','Ghana':'🇬🇭','Panamá':'🇵🇦','TBD-1':'🏳️','TBD-2':'🏳️'
 };
 const flag = t => F[t] || '🏳️';
 
@@ -28,7 +28,7 @@ const LIVE_RESULTS = [
     score: '2 - 1',
     status: 'Finalizado',
     date: '11 Jun 2026',
-    venue: 'Guadalajara'
+    venue: 'Guadalajara Stadium'
   },
   {
     group: 'Grupo B',
@@ -37,7 +37,7 @@ const LIVE_RESULTS = [
     score: '1 - 1',
     status: 'Finalizado',
     date: '12 Jun 2026',
-    venue: 'BC Place, Vancouver'
+    venue: 'BMO Field, Toronto'
   },
   {
     group: 'Grupo D',
@@ -47,6 +47,45 @@ const LIVE_RESULTS = [
     status: 'Finalizado',
     date: '12 Jun 2026',
     venue: 'SoFi Stadium, Los Angeles'
+  }
+];
+
+const TODAY_MATCHES = [
+  {
+    group: 'Grupo B',
+    home: 'Qatar',
+    away: 'Suiza',
+    score: '19:00',
+    status: 'Hoy',
+    date: '13 Jun 2026',
+    venue: "Levi's Stadium, San Francisco"
+  },
+  {
+    group: 'Grupo C',
+    home: 'Brasil',
+    away: 'Marruecos',
+    score: '22:00',
+    status: 'Hoy',
+    date: '13 Jun 2026',
+    venue: 'MetLife Stadium, New York/NJ'
+  },
+  {
+    group: 'Grupo C',
+    home: 'Haití',
+    away: 'Escocia',
+    score: '16:00',
+    status: 'Hoy',
+    date: '13 Jun 2026',
+    venue: 'Gillette Stadium, Boston'
+  },
+  {
+    group: 'Grupo E',
+    home: 'Alemania',
+    away: 'Curazao',
+    score: '14 Jun',
+    status: 'Próximo',
+    date: '14 Jun 2026',
+    venue: 'NRG Stadium, Houston'
   }
 ];
 
@@ -62,138 +101,140 @@ const V = {
   LINCOLN: 'Lincoln Financial Field, Filadelfia', GILLETTE: 'Gillette Stadium, Boston'
 };
 
-/* ── Groups with full match schedule ── */
+const M = (home, away, date = 'Por confirmar', time = '--:--', venue = 'Sede por confirmar') => ({ home, away, date, time, venue });
+
+/* ── Real groups ── */
 const GROUPS = {
   A: {
-    teams: ['México','Estados Unidos','Canadá','Venezuela'],
+    teams: ['México','Corea del Sur','Czechia','Sudáfrica'],
     matches: [
-      { home:'México', away:'Estados Unidos', date:'11 Jun', time:'18:00', venue:V.AZTECA },
-      { home:'Canadá', away:'Venezuela',      date:'12 Jun', time:'15:00', venue:V.BMO },
-      { home:'México', away:'Canadá',         date:'18 Jun', time:'18:00', venue:V.AZTECA },
-      { home:'Estados Unidos', away:'Venezuela', date:'18 Jun', time:'21:00', venue:V.ATT },
-      { home:'México', away:'Venezuela',      date:'25 Jun', time:'21:00', venue:V.AKRON },
-      { home:'Estados Unidos', away:'Canadá', date:'25 Jun', time:'21:00', venue:V.METLIFE },
+      M('México','Sudáfrica','11 Jun','15:00','Estadio Azteca, CDMX'),
+      M('Corea del Sur','Czechia','11 Jun','18:00','Guadalajara Stadium'),
+      M('México','Corea del Sur','19 Jun','01:00','Guadalajara Stadium'),
+      M('Sudáfrica','Czechia','13 Jun','16:00','Atlanta Stadium'),
+      M('México','Czechia'),
+      M('Sudáfrica','Corea del Sur')
     ]
   },
   B: {
-    teams: ['Argentina','Marruecos','Australia','Jamaica'],
+    teams: ['Canadá','Bosnia y Herzegovina','Qatar','Suiza'],
     matches: [
-      { home:'Argentina', away:'Marruecos',   date:'12 Jun', time:'12:00', venue:V.METLIFE },
-      { home:'Australia', away:'Jamaica',     date:'12 Jun', time:'18:00', venue:V.SOFI },
-      { home:'Argentina', away:'Australia',   date:'18 Jun', time:'15:00', venue:V.METLIFE },
-      { home:'Marruecos', away:'Jamaica',     date:'18 Jun', time:'18:00', venue:V.HARD },
-      { home:'Argentina', away:'Jamaica',     date:'25 Jun', time:'21:00', venue:V.HARD },
-      { home:'Marruecos', away:'Australia',   date:'25 Jun', time:'21:00', venue:V.SOFI },
+      M('Canadá','Bosnia y Herzegovina','12 Jun','19:00','BMO Field, Toronto'),
+      M('Qatar','Suiza','13 Jun','19:00',V.LEVIS),
+      M('Canadá','Qatar','13 Jun','22:00',V.BC),
+      M('Suiza','Bosnia y Herzegovina','18 Jun','19:00',V.SOFI),
+      M('Canadá','Suiza'),
+      M('Bosnia y Herzegovina','Qatar')
     ]
   },
   C: {
-    teams: ['España','Brasil','Japón','Costa Rica'],
+    teams: ['Brasil','Marruecos','Haití','Escocia'],
     matches: [
-      { home:'España',   away:'Brasil',       date:'13 Jun', time:'15:00', venue:V.SOFI },
-      { home:'Japón',    away:'Costa Rica',   date:'13 Jun', time:'18:00', venue:V.LEVIS },
-      { home:'España',   away:'Japón',        date:'19 Jun', time:'15:00', venue:V.ATT },
-      { home:'Brasil',   away:'Costa Rica',   date:'19 Jun', time:'18:00', venue:V.METLIFE },
-      { home:'España',   away:'Costa Rica',   date:'26 Jun', time:'21:00', venue:V.SOFI },
-      { home:'Brasil',   away:'Japón',        date:'26 Jun', time:'21:00', venue:V.LINCOLN },
+      M('Brasil','Marruecos','13 Jun','22:00',V.METLIFE),
+      M('Haití','Escocia','13 Jun','16:00',V.GILLETTE),
+      M('Brasil','Haití'),
+      M('Marruecos','Escocia','13 Jun','22:00',V.GILLETTE),
+      M('Brasil','Escocia'),
+      M('Marruecos','Haití')
     ]
   },
   D: {
-    teams: ['Francia','Nigeria','Corea del Sur','Honduras'],
+    teams: ['Estados Unidos','Paraguay','Australia','Turquía'],
     matches: [
-      { home:'Francia',  away:'Nigeria',      date:'13 Jun', time:'21:00', venue:V.HARD },
-      { home:'Corea del Sur', away:'Honduras', date:'14 Jun', time:'12:00', venue:V.LUMEN },
-      { home:'Francia',  away:'Corea del Sur', date:'19 Jun', time:'18:00', venue:V.METLIFE },
-      { home:'Nigeria',  away:'Honduras',     date:'19 Jun', time:'21:00', venue:V.MERCED },
-      { home:'Francia',  away:'Honduras',     date:'26 Jun', time:'21:00', venue:V.ATT },
-      { home:'Nigeria',  away:'Corea del Sur', date:'26 Jun', time:'21:00', venue:V.MERCED },
+      M('Estados Unidos','Paraguay','12 Jun','19:00',V.SOFI),
+      M('Australia','Turquía'),
+      M('Estados Unidos','Australia','18 Jun','19:00',V.LUMEN),
+      M('Paraguay','Turquía'),
+      M('Estados Unidos','Turquía'),
+      M('Paraguay','Australia')
     ]
   },
   E: {
-    teams: ['Alemania','Colombia','Arabia Saudita','Eslovakia'],
+    teams: ['Alemania','Curazao','Costa de Marfil','Ecuador'],
     matches: [
-      { home:'Alemania', away:'Colombia',     date:'14 Jun', time:'15:00', venue:V.METLIFE },
-      { home:'Arabia Saudita', away:'Eslovakia', date:'14 Jun', time:'18:00', venue:V.NRG },
-      { home:'Alemania', away:'Arabia Saudita', date:'20 Jun', time:'15:00', venue:V.GILLETTE },
-      { home:'Colombia', away:'Eslovakia',    date:'20 Jun', time:'18:00', venue:V.ARROW },
-      { home:'Alemania', away:'Eslovakia',    date:'27 Jun', time:'21:00', venue:V.METLIFE },
-      { home:'Colombia', away:'Arabia Saudita', date:'27 Jun', time:'21:00', venue:V.NRG },
+      M('Alemania','Curazao','14 Jun','13:00',V.NRG),
+      M('Costa de Marfil','Ecuador'),
+      M('Alemania','Costa de Marfil'),
+      M('Curazao','Ecuador'),
+      M('Alemania','Ecuador'),
+      M('Curazao','Costa de Marfil')
     ]
   },
   F: {
-    teams: ['Inglaterra','Uruguay','Irán','Dinamarca'],
+    teams: ['Países Bajos','Japón','Suecia','Túnez'],
     matches: [
-      { home:'Inglaterra', away:'Uruguay',    date:'14 Jun', time:'21:00', venue:V.LINCOLN },
-      { home:'Irán',     away:'Dinamarca',    date:'15 Jun', time:'12:00', venue:V.NRG },
-      { home:'Inglaterra', away:'Irán',       date:'20 Jun', time:'21:00', venue:V.HARD },
-      { home:'Uruguay',  away:'Dinamarca',    date:'20 Jun', time:'18:00', venue:V.BC },
-      { home:'Inglaterra', away:'Dinamarca',  date:'27 Jun', time:'21:00', venue:V.METLIFE },
-      { home:'Uruguay',  away:'Irán',         date:'27 Jun', time:'21:00', venue:V.BC },
+      M('Países Bajos','Japón'),
+      M('Suecia','Túnez'),
+      M('Países Bajos','Suecia'),
+      M('Japón','Túnez'),
+      M('Países Bajos','Túnez'),
+      M('Japón','Suecia')
     ]
   },
   G: {
-    teams: ['Portugal','Senegal','Irak','Austria'],
+    teams: ['Bélgica','Egipto','Irán','Nueva Zelanda'],
     matches: [
-      { home:'Portugal', away:'Senegal',      date:'15 Jun', time:'15:00', venue:V.LEVIS },
-      { home:'Irak',     away:'Austria',      date:'15 Jun', time:'18:00', venue:V.LINCOLN },
-      { home:'Portugal', away:'Irak',         date:'21 Jun', time:'15:00', venue:V.SOFI },
-      { home:'Senegal',  away:'Austria',      date:'21 Jun', time:'18:00', venue:V.MERCED },
-      { home:'Portugal', away:'Austria',      date:'26 Jun', time:'21:00', venue:V.LEVIS },
-      { home:'Senegal',  away:'Irak',         date:'26 Jun', time:'21:00', venue:V.MERCED },
+      M('Bélgica','Egipto'),
+      M('Irán','Nueva Zelanda'),
+      M('Bélgica','Irán'),
+      M('Egipto','Nueva Zelanda'),
+      M('Bélgica','Nueva Zelanda'),
+      M('Egipto','Irán')
     ]
   },
   H: {
-    teams: ['Países Bajos','Egipto','Ecuador','Serbia'],
+    teams: ['España','Cabo Verde','Arabia Saudita','Uruguay'],
     matches: [
-      { home:'Países Bajos', away:'Egipto',   date:'15 Jun', time:'21:00', venue:V.METLIFE },
-      { home:'Ecuador', away:'Serbia',        date:'16 Jun', time:'12:00', venue:V.ATT },
-      { home:'Países Bajos', away:'Ecuador',  date:'21 Jun', time:'18:00', venue:V.LINCOLN },
-      { home:'Egipto',   away:'Serbia',       date:'21 Jun', time:'21:00', venue:V.ATT },
-      { home:'Países Bajos', away:'Serbia',   date:'27 Jun', time:'21:00', venue:V.METLIFE },
-      { home:'Egipto',   away:'Ecuador',      date:'27 Jun', time:'21:00', venue:V.ATT },
+      M('España','Cabo Verde'),
+      M('Arabia Saudita','Uruguay'),
+      M('España','Arabia Saudita'),
+      M('Cabo Verde','Uruguay'),
+      M('España','Uruguay'),
+      M('Cabo Verde','Arabia Saudita')
     ]
   },
   I: {
-    teams: ['Bélgica','Mali','Uzbekistán','Suiza'],
+    teams: ['Francia','Senegal','Irak','Noruega'],
     matches: [
-      { home:'Bélgica',  away:'Mali',         date:'16 Jun', time:'15:00', venue:V.MERCED },
-      { home:'Uzbekistán', away:'Suiza',      date:'16 Jun', time:'18:00', venue:V.BC },
-      { home:'Bélgica',  away:'Uzbekistán',   date:'22 Jun', time:'15:00', venue:V.LINCOLN },
-      { home:'Mali',     away:'Suiza',        date:'22 Jun', time:'18:00', venue:V.GILLETTE },
-      { home:'Bélgica',  away:'Suiza',        date:'27 Jun', time:'21:00', venue:V.HARD },
-      { home:'Mali',     away:'Uzbekistán',   date:'27 Jun', time:'21:00', venue:V.BC },
+      M('Francia','Senegal'),
+      M('Irak','Noruega','13 Jun','22:00',V.GILLETTE),
+      M('Francia','Irak'),
+      M('Senegal','Noruega'),
+      M('Francia','Noruega'),
+      M('Senegal','Irak')
     ]
   },
   J: {
-    teams: ['Italia','Camerún','Jordania','Turquía'],
+    teams: ['Argentina','Argelia','Austria','Jordania'],
     matches: [
-      { home:'Italia',   away:'Camerún',      date:'16 Jun', time:'21:00', venue:V.LINCOLN },
-      { home:'Jordania', away:'Turquía',      date:'17 Jun', time:'12:00', venue:V.ATT },
-      { home:'Italia',   away:'Jordania',     date:'22 Jun', time:'18:00', venue:V.METLIFE },
-      { home:'Camerún',  away:'Turquía',      date:'22 Jun', time:'21:00', venue:V.ARROW },
-      { home:'Italia',   away:'Turquía',      date:'27 Jun', time:'21:00', venue:V.METLIFE },
-      { home:'Camerún',  away:'Jordania',     date:'27 Jun', time:'21:00', venue:V.ARROW },
+      M('Argentina','Argelia'),
+      M('Austria','Jordania'),
+      M('Argentina','Austria'),
+      M('Argelia','Jordania'),
+      M('Argentina','Jordania'),
+      M('Argelia','Austria')
     ]
   },
   K: {
-    teams: ['Sudáfrica','Costa de Marfil','Nueva Zelanda','Hungría'],
+    teams: ['Portugal','R.D. Congo','Uzbekistán','Colombia'],
     matches: [
-      { home:'Sudáfrica', away:'Costa de Marfil', date:'17 Jun', time:'15:00', venue:V.MERCED },
-      { home:'Nueva Zelanda', away:'Hungría',     date:'17 Jun', time:'18:00', venue:V.LUMEN },
-      { home:'Sudáfrica', away:'Nueva Zelanda',   date:'22 Jun', time:'21:00', venue:V.MERCED },
-      { home:'Costa de Marfil', away:'Hungría',   date:'22 Jun', time:'21:00', venue:V.BC },
-      { home:'Sudáfrica', away:'Hungría',         date:'27 Jun', time:'21:00', venue:V.ATT },
-      { home:'Costa de Marfil', away:'Nueva Zelanda', date:'27 Jun', time:'21:00', venue:V.LUMEN },
+      M('Portugal','R.D. Congo'),
+      M('Uzbekistán','Colombia','14 Jun','22:00','Mexico City Stadium'),
+      M('Portugal','Uzbekistán'),
+      M('R.D. Congo','Colombia'),
+      M('Portugal','Colombia'),
+      M('R.D. Congo','Uzbekistán')
     ]
   },
   L: {
-    teams: ['R.D. Congo','Escocia','TBD-1','TBD-2'],
+    teams: ['Inglaterra','Croacia','Ghana','Panamá'],
     matches: [
-      { home:'R.D. Congo', away:'Escocia',   date:'17 Jun', time:'21:00', venue:V.METLIFE },
-      { home:'TBD-1',   away:'TBD-2',        date:'18 Jun', time:'12:00', venue:V.BBVA },
-      { home:'R.D. Congo', away:'TBD-1',     date:'23 Jun', time:'15:00', venue:V.HARD },
-      { home:'Escocia', away:'TBD-2',        date:'23 Jun', time:'18:00', venue:V.LEVIS },
-      { home:'R.D. Congo', away:'TBD-2',     date:'27 Jun', time:'21:00', venue:V.MERCED },
-      { home:'Escocia', away:'TBD-1',        date:'27 Jun', time:'21:00', venue:V.LEVIS },
+      M('Inglaterra','Croacia'),
+      M('Ghana','Panamá'),
+      M('Inglaterra','Ghana'),
+      M('Croacia','Panamá'),
+      M('Inglaterra','Panamá'),
+      M('Croacia','Ghana')
     ]
   }
 };
@@ -282,6 +323,31 @@ function renderResults() {
     </article>
   `).join('');
   observeCards('.result-card');
+}
+
+function renderToday() {
+  const grid = document.getElementById('todayGrid');
+  grid.innerHTML = TODAY_MATCHES.map(m => `
+    <article class="result-card upcoming-card">
+      <div class="result-top">
+        <span class="result-group">${m.group}</span>
+        <span class="result-status">${m.status}</span>
+      </div>
+      <div class="result-main">
+        <div class="result-team">
+          <span class="flag">${flag(m.home)}</span>
+          <span>${m.home}</span>
+        </div>
+        <div class="result-score">${m.score}</div>
+        <div class="result-team away">
+          <span class="flag">${flag(m.away)}</span>
+          <span>${m.away}</span>
+        </div>
+      </div>
+      <div class="result-meta">📅 ${m.date} · 📍 ${m.venue}</div>
+    </article>
+  `).join('');
+  observeCards('.upcoming-card');
 }
 
 function renderGroups() {
@@ -405,6 +471,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 /* ── Init ── */
 renderResults();
+renderToday();
 renderGroups();
 renderBracket();
 renderVenues();
