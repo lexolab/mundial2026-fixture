@@ -7,9 +7,48 @@ const F = {
   'Canadá':'🇨🇦','Costa Rica':'🇨🇷','Honduras':'🇭🇳','Jamaica':'🇯🇲','Japón':'🇯🇵','Corea del Sur':'🇰🇷',
   'Arabia Saudita':'🇸🇦','Australia':'🇦🇺','Irán':'🇮🇷','Irak':'🇮🇶','Uzbekistán':'🇺🇿','Jordania':'🇯🇴',
   'Marruecos':'🇲🇦','Senegal':'🇸🇳','Egipto':'🇪🇬','Nigeria':'🇳🇬','Camerún':'🇨🇲','Mali':'🇲🇱',
-  'Sudáfrica':'🇿🇦','Costa de Marfil':'🇨🇮','R.D. Congo':'🇨🇩','Nueva Zelanda':'🇳🇿','TBD-1':'🏳️','TBD-2':'🏳️'
+  'Sudáfrica':'🇿🇦','Costa de Marfil':'🇨🇮','R.D. Congo':'🇨🇩','Nueva Zelanda':'🇳🇿','Bosnia y Herzegovina':'🇧🇦','Paraguay':'🇵🇾','Czechia':'🇨🇿','TBD-1':'🏳️','TBD-2':'🏳️'
 };
 const flag = t => F[t] || '🏳️';
+
+const LIVE_RESULTS = [
+  {
+    group: 'Grupo A',
+    home: 'México',
+    away: 'Sudáfrica',
+    score: '2 - 0',
+    status: 'Finalizado',
+    date: '11 Jun 2026',
+    venue: 'Estadio Azteca, CDMX'
+  },
+  {
+    group: 'Grupo A',
+    home: 'Corea del Sur',
+    away: 'Czechia',
+    score: '2 - 1',
+    status: 'Finalizado',
+    date: '11 Jun 2026',
+    venue: 'Guadalajara'
+  },
+  {
+    group: 'Grupo B',
+    home: 'Canadá',
+    away: 'Bosnia y Herzegovina',
+    score: '1 - 1',
+    status: 'Finalizado',
+    date: '12 Jun 2026',
+    venue: 'BC Place, Vancouver'
+  },
+  {
+    group: 'Grupo D',
+    home: 'Estados Unidos',
+    away: 'Paraguay',
+    score: '4 - 1',
+    status: 'Finalizado',
+    date: '12 Jun 2026',
+    venue: 'SoFi Stadium, Los Angeles'
+  }
+];
 
 /* ── Venues ── */
 const V = {
@@ -220,6 +259,31 @@ const VENUES = [
 ];
 
 /* ────────────── Render ────────────── */
+function renderResults() {
+  const grid = document.getElementById('resultsGrid');
+  grid.innerHTML = LIVE_RESULTS.map(m => `
+    <article class="result-card">
+      <div class="result-top">
+        <span class="result-group">${m.group}</span>
+        <span class="result-status">${m.status}</span>
+      </div>
+      <div class="result-main">
+        <div class="result-team">
+          <span class="flag">${flag(m.home)}</span>
+          <span>${m.home}</span>
+        </div>
+        <div class="result-score">${m.score}</div>
+        <div class="result-team away">
+          <span class="flag">${flag(m.away)}</span>
+          <span>${m.away}</span>
+        </div>
+      </div>
+      <div class="result-meta">📅 ${m.date} · 📍 ${m.venue}</div>
+    </article>
+  `).join('');
+  observeCards('.result-card');
+}
+
 function renderGroups() {
   const grid = document.getElementById('groupsGrid');
   grid.innerHTML = '';
@@ -331,6 +395,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.getElementById(`tab-${target}`).classList.add('active');
     // Re-trigger observers for newly visible section
     setTimeout(() => {
+      if (target === 'resultados') observeCards('.result-card');
       if (target === 'bracket') observeCards('.ko-match');
       if (target === 'sedes') observeCards('.sede-card');
       if (target === 'grupos') observeCards('.group-card');
@@ -339,6 +404,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 });
 
 /* ── Init ── */
+renderResults();
 renderGroups();
 renderBracket();
 renderVenues();
